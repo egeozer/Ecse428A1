@@ -2,7 +2,7 @@ Feature: Login
   
 As a Consumer of the Lego(R) Part Warehouse System
 I would like to Login to the System
-So that I Access the Features of the Lego(R) Parts Warehouse System
+So that I Access my Lego(R) Parts Warehouse System Account
   
 Scenario: Login to the System with Valid Information (Normal Flow)
 
