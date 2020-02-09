@@ -82,7 +82,7 @@ Scenario: Modify Order with Several Valid Products and Quantities and it has alr
 
 Given I am logged on as user Pierre
 And my payment information is valid
-And my existing order has already been prepared yet
+And my existing order has already been prepared
 When I submit an order modification with the following products and quantities:
 |Quantity   |Part      |
 |25         |655c      |
