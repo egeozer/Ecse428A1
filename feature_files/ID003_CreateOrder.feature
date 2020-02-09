@@ -1,6 +1,6 @@
 Feature: Create Order 
   
-As a consumer of the Lego(R) Part Warehouse Operator
+As a consumer of the Lego(R) Part Warehouse
 I would like to create a new order
 So that I can receive the Lego(R) parts that I want.
   
