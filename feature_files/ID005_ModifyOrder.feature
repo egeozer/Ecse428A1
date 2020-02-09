@@ -76,7 +76,7 @@ When I submit an order modification with the following products and quantities:
 |40         |3001      |
 |150        |645a      |
 Then the system should not update my order
-And I should receive an error message prompting me to update my payment information
+And I should receive an error message prompting me to update my payment information so that I can be charged
   
 Scenario: Modify Order with Several Valid Products and Quantities and it has already been Prepared (Error Flow)
 
@@ -89,4 +89,4 @@ When I submit an order modification with the following products and quantities:
 |40         |3001      |
 |150        |645a      |
 Then the system should not update my order
-And I should receive an error message informing me that I cannot modify my order anymore
+And I should receive an error message informing me that I cannot modify my order anymore since it has already been prepared
