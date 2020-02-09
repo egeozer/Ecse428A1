@@ -1,6 +1,6 @@
 Feature: Register New Consumer 
   
-As an upcoming consumer of the Lego(R) Part Warehouse Operator
+As an upcoming consumer of the Lego(R) Part Warehouse
 I would like to register to the system 
 So that I can place orders to receive the Lego(R) parts that I want
   
