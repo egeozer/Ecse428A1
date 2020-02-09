@@ -1,8 +1,8 @@
 Feature: Register New Consumer 
   
-As an upcoming consumer of the Lego(R) Part Warehouse System
+As a Consumer of the Lego(R) Part Warehouse System
 I would like to Register to the System
-So that I can Login to the Lego(R) Parts Warehouse System
+So that I can Use the Lego(R) Parts Warehouse System
   
 Scenario: Register to the System with Valid Information (Normal Flow)
 
