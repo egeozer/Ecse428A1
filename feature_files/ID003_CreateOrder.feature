@@ -4,24 +4,25 @@ As a consumer of the Lego(R) Part Warehouse
 I would like to create a new order
 So that I can receive the Lego(R) parts that I want.
   
-Scenario: Register to the System with Valid Information (Normal Flow)
+Scenario: Create Order with Several Valid Products and Quantities (Normal Flow)
 
-Given I am browsing the register page
-When I register with this profile information:
-| Name   | Surname | Password | Password confirmation | email             | Phone Number | Address              | City     | Province | Countrty |
-| Pierre | Robert  | bla3Bla; | bla3Bla;              | pierre@outlook.ca | 5143334444   | 3092 St-Laurent blvd | Montreal | QC       | Canada   |
-Then the system should create my consumer account
-And I should receive a confirmation email
-And I should now be able to sign in to the system
+Given I am logged on as user Pierre
+And my payment information is valid
+When I submit an order with the following products and quantities:
+|Quantity   |Part      |
+|25         |655c      |
+|40         |3001      |
+|150        |645a      |
+Then the system should create my oder
+And I should receive a confirmation receipt by email
   
-Scenario: Register to the System with an Email tied to an Existing Account (Alternate Flow)
+Scenario: Create Order with One Valid Products and Quantity (Alternate Flow)
 
-Given I am browsing the register page
-When I register with this profile information:
-| Name   | Surname | Password | Password confirmation | email             | Phone Number | Address              | City     | Province | Countrty |
-| Pierre | Robert  | bla3Bla; | bla3Bla;              | pierre@outlook.ca | 5143334444   | 3092 St-Laurent blvd | Montreal | QC       | Canada   |
-Then the system should not create my consumer account
-And I should be prompted to access my existing account
+Given I am logged on as user Pierre
+And my payment information is valid
+When I submit an order with the quantity 30 of Part bb19
+Then the system should create my oder
+And I should receive a confirmation receipt by email
 
 Scenario: Register to the System with an Invalid Password Format (Error Flow)
 
