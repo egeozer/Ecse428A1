@@ -70,4 +70,4 @@ When I submit an order with the following products and quantities:
 |40         |3001      |
 |150        |645a      |
 Then the system should not create my order
-And I should receive an error message prompting me to update my payment information
+And I should receive an error message prompting me to update my payment information so that I can be charged
