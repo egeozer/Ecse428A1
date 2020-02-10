@@ -47,7 +47,7 @@
       | bin1899 | 25       | 655c |
       | bin2012 | 40       | 3001 |
       | bin1755 | 150      | 645a |
-     When the following products are requested
+     When modifications for the following products are requested
       | Quantity | Part | Update Operation | 
       | 25       | 655c | Add              |
       | 105      | 655c | Add              |
@@ -71,7 +71,7 @@
       | bin1899 | 25       | 655c |
       | bin2012 | 10       | 3001 |
       | bin1755 | 150      | 645a |
-     When the following products are requested
+     When modifications for the following products are requested
       | Quantity | Part | Update Operation | 
       | 25       | 655c | Add              |
       | 40       | 3001 | Add              |
@@ -90,7 +90,7 @@
       | Bin     | Quantity | Part |
       | bin1899 | 25       | 655c |
       | bin2012 | 40       | 3001 |
-     When the following products are requested
+     When modifications for the following products are requested
       | Quantity | Part       | Update Operation |  
       | 25       | 655c       | Add              | 
       | 20       | 3001       | Remove           |
@@ -109,14 +109,15 @@
       | Bin     | Quantity | Part |
       | bin1899 | 25       | 655c |
       | bin2012 | 40       | 3001 |
-     When the following products are requested
+     When modifications for the following products are requested
       | Quantity | Part       | Update Operation | 
       | 25       | 655c       | Add              |  
-      | 40       | big wheel  | Remove           | 
+      | 40       | big wheel  | Add              | 
       | 150      | blue brick | Add              | 
-     Then the following pick list is returned
+     Then the following updated pick list is returned
       | Bin      | Quantity | Part       | 
-      | bin1899  | 25       | 655c       | 
+      | bin1899  | 50       | 655c       |
+      | bin2012  | 40       | 3001       |
       | Part DNE | 40       | big wheel  | 
       | Part DNE | 150      | blue brick | 
   
@@ -124,13 +125,19 @@
   
     Given user OP3 is logged on as the operator
       And the inventory has been initialized
-     When the following products are requested
-      | Quantity | Part       | 
-      | 25       | shiny pin  | 
-      | 40       | big wheel  | 
-      | 150      | blue brick | 
-     Then the following pick list is returned
-      | Bin      | Quantity | Part       | 
+      And the existing pick list contains the following products and quantities
+      | Bin     | Quantity | Part |
+      | bin1899 | 25       | 655c |
+      | bin2012 | 40       | 3001 |
+     When modifications for the following products are requested
+      | Quantity | Part       | Update Operation |
+      | 25       | shiny pin  | Add              |
+      | 40       | big wheel  | Add              | 
+      | 150      | blue brick | Add              | 
+     Then the following updated pick list is returned
+      | Bin      | Quantity | Part       |
+      | bin1899  | 25       | 655c       |
+      | bin2012  | 40       | 3001       |
       | Part DNE | 25       | shiny pin  | 
       | Part DNE | 40       | big wheel  | 
       | Part DNE | 150      | blue brick | 
@@ -139,22 +146,34 @@
   
     Given user Undefined is logged on as the operator
       And the inventory has been initialized
-     When the quantity 25 of Part 655c is requested
+      And the existing pick list contains the following products and quantities
+      | Bin     | Quantity | Part |
+      | bin1899 | 25       | 655c |
+      | bin2012 | 40       | 3001 |
+     When the quantity 25 of Part 655c is requested to be added
      Then the system displays an error message notifying that a valid Operator must be logged in
   
   Scenario: Suspended Operator Attempts to Modify Pick List for One Valid Product (Error Flow)
   
     Given user Suspended is logged on as the operator
       And the inventory has been initialized
-     When the quantity 25 of Part 655c is requested
+      And the existing pick list contains the following products and quantities
+      | Bin     | Quantity | Part |
+      | bin1899 | 25       | 655c |
+      | bin2012 | 40       | 3001 |
+     When the quantity 25 of Part 655c is requested to be added
      Then the system displays an error message notifying that an Operator who isn't suspended must be logged in
   
   Scenario: Modify Pick List for One Valid Product with Inventory not Initialized (Error Flow)
   
     Given user Undefined is logged on as the operator
       And the inventory has not been initialized
-     When the quantity 25 of Part 655c is requested
-     Then the system displays an error message notifying that must be initialized before pick list can be created
+      And the existing pick list contains the following products and quantities
+      | Bin     | Quantity | Part |
+      | bin1899 | 25       | 655c |
+      | bin2012 | 40       | 3001 |
+     When the quantity 25 of Part 655c is requested to be added
+     Then the system displays an error message notifying that must be initialized before pick list can be modified
   
   Scenario: Modify Pick List for Several Valid Products with Insufficient Quantity from a Single Bin for a Single Product (Error Flow)
   
@@ -162,19 +181,21 @@
       And the inventory count is defined to be
       | Bin     | Quantity | Part | 
       | bin1899 | 300      | 655c | 
-      | bin2012 | 20       | 3001 | 
+      | bin2012 | 70       | 3001 | 
       | bin1755 | 350      | 645a | 
-     When the following products are requested
-      | Quantity | Part | 
-      | 25       | 655c | 
-      | 40       | 3001 | 
-      | 150      | 645a | 
-     Then the following pick list is returned
+      And the existing pick list contains the following products and quantities
+      | Bin     | Quantity | Part |
+      | bin1899 | 25       | 655c |
+      | bin2012 | 40       | 3001 |
+     When modifications for the following products are requested
+      | Quantity | Part | Update Operation | 
+      | 25       | 655c | Add              | 
+      | 40       | 3001 | Add              |  
+     Then the following updated pick list is returned
       | Bin       | Quantity | Part | 
-      | bin1899   | 130      | 655c | 
-      | bin2012   | 20       | 3001 | 
-      | SHORTFALL | 20       | 3001 | 
-      | bin1755   | 150      | 645a | 
+      | bin1899   | 50       | 655c | 
+      | bin2012   | 70       | 3001 | 
+      | SHORTFALL | 10       | 3001 |
   
   Scenario: Modify Pick List for One Valid Product with Insufficient Quantity from Multiple Bins (Error Flow)
   
@@ -182,10 +203,16 @@
       And the inventory count is defined to be
       | Bin     | Quantity | Part | 
       | bin1899 | 100      | 655c | 
-      | bin1898 | 120      | 655c | 
-     When the quantity 250 of Part 655c is requested
+      | bin1898 | 120      | 655c |
+      | bin2012 | 400      | 3001 |
+      And the existing pick list contains the following products and quantities
+      | Bin     | Quantity | Part |
+      | bin1899 | 30       | 655c |
+      | bin2012 | 40       | 3001 |
+     When the quantity 250 of Part 655c is requested to be added
      Then the following pick list is returned
       | Bin       | Quantity | Part | 
       | bin1899   | 100      | 655c | 
       | bin1898   | 120      | 655c | 
-      | SHORTFALL | 30       | 655c |
+      | SHORTFALL | 60       | 655c |
+      | bin2012   | 40       | 3001 |
