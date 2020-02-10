@@ -27,12 +27,12 @@
      Then the system does not delete the pick list
       And the system displays an error message notifying that an Operator who isn't suspended must be logged in
   
-  Scenario: Delete Pick List that does not Exist (Error Flow)
+  Scenario: Delete Invalid Pick List (Error Flow)
   
     Given user OP3 is logged on as the operator
      When the pick list with id Undefined is requested to be deleted
      Then the system does not delete the pick list
-      And the system displays an error message notifying that the Pick List with id Undefined does not exist
+      And the system displays an error message notifying that a Valid Pick List must be selected
   
   Scenario: Delete Pick List that has already been prepared (Error Flow)
   
