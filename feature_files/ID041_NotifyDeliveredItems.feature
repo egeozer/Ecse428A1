@@ -1,4 +1,4 @@
-Feature: Notify that the items are delivered to the destination
+Feature: Notify the status of delivered items
 
   As a Warehouse picker of the Lego(R) Part Warehouse System
   I would like to Notify that the items are delivered to the destination
