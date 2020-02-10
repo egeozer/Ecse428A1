@@ -1,0 +1,12 @@
+Processing Time Restore Full System Backup
+
+Scale: 
+Time to Complete Full System Backup
+
+Meter: 
+Average processing time on loaded system of the last 10 Full Restores
+
+Target: 
+For a small backup (less than 100 gigabytes) 200 seconds or less 90% of the time.
+For a medium backup (between 100 and 750 gigabytes) 400 seconds or less 80% of the time.
+For a big backup (more than 750 gigabytes) 600 seconds or less 70% of the time.
