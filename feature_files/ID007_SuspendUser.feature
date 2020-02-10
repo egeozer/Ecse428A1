@@ -2,7 +2,7 @@
   
   As a System Admin of the Lego(R) Part Warehouse
   I would like to suspend a user
-  So that I can prevent the user from logging in the Lego(R) Part Warehouse System
+  So that I can temporarely prevent the user from logging in the Lego(R) Part Warehouse System
   
   Scenario: Suspend an existing user using his name (Normal Flow)
     Given the following user is already regsitered

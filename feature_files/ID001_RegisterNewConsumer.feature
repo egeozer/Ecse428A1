@@ -16,7 +16,6 @@
   
   Scenario: Register to the System with an Email tied to an Existing Account (Alternate Flow)
   
-    Given I am browsing the register page
      When I register with this profile information:
       | Name   | Surname | Password | Password confirmation | email             | Phone Number | Address              | City     | Province | Countrty | 
       | Pierre | Robert  | bla3Bla; | bla3Bla;              | pierre@outlook.ca | 5143334444   | 3092 St-Laurent blvd | Montreal | QC       | Canada   | 
@@ -25,7 +24,6 @@
   
   Scenario: Register to the System with an Invalid Password Format (Error Flow)
   
-    Given I am browsing the register page
      When I register with this profile information:
       | Name   | Surname | Password | Password confirmation | email             | Phone Number | Address              | City     | Province | Countrty | 
       | Pierre | Robert  | bla      | bla                   | pierre@outlook.ca | 5143334444   | 3092 St-Laurent blvd | Montreal | QC       | Canada   | 
@@ -34,7 +32,6 @@
   
   Scenario: Register to the System with an Mismatched Password and Password Confirmation (Error Flow)
   
-    Given I am browsing the register page
      When I register with this profile information:
       | Name   | Surname | Password | Password confirmation | email             | Phone Number | Address              | City     | Province | Countrty | 
       | Pierre | Robert  | blaBla3; | blaBla4!              | pierre@outlook.ca | 5143334444   | 3092 St-Laurent blvd | Montreal | QC       | Canada   | 
@@ -43,7 +40,6 @@
   
   Scenario: Register to the System with an Invalid Email (Error Flow)
   
-    Given I am browsing the register page
      When I register with this profile information:
       | Name   | Surname | Password | Password confirmation | email          | Phone Number | Address              | City     | Province | Countrty | 
       | Pierre | Robert  | blaBla3; | blaBla3;              | pierremail.com | 5143334444   | 3092 St-Laurent blvd | Montreal | QC       | Canada   | 
@@ -52,7 +48,6 @@
   
   Scenario: Register to the System with an Invalid Phone Number (Error Flow)
   
-    Given I am browsing the register page
      When I register with this profile information:
       | Name   | Surname | Password | Password confirmation | email             | Phone Number | Address              | City     | Province | Countrty | 
       | Pierre | Robert  | blaBla3; | blaBla3;              | pierre@outlook.ca | 06           | 3092 St-Laurent blvd | Montreal | QC       | Canada   | 
@@ -61,7 +56,6 @@
   
   Scenario: Register to the System with an Invalid Address (Error Flow)
   
-    Given I am browsing the register page
      When I register with this profile information:
       | Name   | Surname | Password | Password confirmation | email             | Phone Number | Address  | City     | Province | Countrty | 
       | Pierre | Robert  | blaBla3; | blaBla3;              | pierre@outlook.ca | 5143334444   | My house | Montreal | QC       | Canada   | 
