@@ -68,7 +68,7 @@
       | bin1899 | 300      | 655c | 
       | bin2012 | 20       | 3001 | 
       | bin2013 | 40       | 3001 | 
-      | bin1755 | 350      | 645a |
+      | bin1755 | 350      | 645a | 
       And the existing pick list has not been prepared yet 
       And the existing pick list contains the following products and quantities
       | Bin     | Quantity | Part | 
@@ -184,7 +184,7 @@
       | bin2012 | 40       | 3001 | 
      When the quantity 25 of Part 655c is requested to be added
      Then the system displays an error message notifying that inventory must be initialized before pick list can be modified
-     
+  
   Scenario: Modify Pick List for One Valid Product with For Pick List that has Already been Prepared (Error Flow)
   
     Given user Undefined is logged on as the operator
@@ -240,4 +240,5 @@
       | bin1898   | 120      | 655c | 
       | SHORTFALL | 60       | 655c | 
       | bin2012   | 40       | 3001 | 
+  
   
