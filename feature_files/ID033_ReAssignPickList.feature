@@ -12,7 +12,7 @@
       And the existing pick list with id 001 has not been prepared yet
      When the pick list with id 001 is reassigned to WP2
      Then the system assigns the pick list with id 001 to Warehouse picker WP2
-      And the system remove the pick list with id 001 from Warehouse picker WP1's assignments
+      And the system remove the pick list with id 001 from the assignments of Warehouse picker WP1
   
   Scenario: Invalid Operator Attempts to ReAssign Pick List (Error Flow)
   
