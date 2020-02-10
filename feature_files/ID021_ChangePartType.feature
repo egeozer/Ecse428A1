@@ -23,7 +23,7 @@
         
 	Scenario: Changing to the same part type (Error Flow)
 		Given the part has type "645"
-        And the new type is "645"
+		And the new type is "645"
 		Then when the request to change the part type is made
 		Then the system should not treat the request
 		And an error message should display "Error, Attempting to change to the same part type"
