@@ -29,14 +29,14 @@
   
   Scenario: Delete Pick List that does not Exist (Error Flow)
   
-    Given user Undefined is logged on as the operator
+    Given user OP3 is logged on as the operator
      When the pick list with id Undefined is requested to be deleted
      Then the system does not delete the pick list
       And the system displays an error message notifying that the Pick List with id Undefined does not exist
   
   Scenario: Delete Pick List that has already been prepared (Error Flow)
   
-    Given user Undefined is logged on as the operator
+    Given user OP3 is logged on as the operator
       And the existing pick list with id 001 has alredy been prepared
      When the pick list with id 001 is requested to be deleted
      Then the system does not delete the pick list
