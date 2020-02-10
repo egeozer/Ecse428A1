@@ -8,6 +8,7 @@
   
     Given user OP3 is logged on as the operator
       And the inventory has been initialized
+      And the existing pick list has not been prepared yet
       And the existing pick list contains the following products and quantities
       | Bin     | Quantity | Part | 
       | bin1899 | 25       | 655c | 
@@ -27,6 +28,7 @@
   
     Given user OP3 is logged on as the operator
       And the inventory has been initialized
+      And the existing pick list has not been prepared yet
       And the existing pick list contains the following products and quantities
       | Bin     | Quantity | Part | 
       | bin1899 | 25       | 655c | 
@@ -42,6 +44,7 @@
   
     Given user OP3 is logged on as the operator
       And the inventory has been initialized
+      And the existing pick list has not been prepared yet
       And the existing pick list contains the following products and quantities
       | Bin     | Quantity | Part | 
       | bin1899 | 25       | 655c | 
@@ -65,7 +68,8 @@
       | bin1899 | 300      | 655c | 
       | bin2012 | 20       | 3001 | 
       | bin2013 | 40       | 3001 | 
-      | bin1755 | 350      | 645a | 
+      | bin1755 | 350      | 645a |
+      And the existing pick list has not been prepared yet 
       And the existing pick list contains the following products and quantities
       | Bin     | Quantity | Part | 
       | bin1899 | 25       | 655c | 
@@ -86,6 +90,7 @@
   
     Given user OP3 is logged on as the operator
       And the inventory has been initialized
+      And the existing pick list has not been prepared yet
       And the existing pick list contains the following products and quantities
       | Bin     | Quantity | Part | 
       | bin1899 | 25       | 655c | 
@@ -105,6 +110,7 @@
   
     Given user OP3 is logged on as the operator
       And the inventory has been initialized
+      And the existing pick list has not been prepared yet
       And the existing pick list contains the following products and quantities
       | Bin     | Quantity | Part | 
       | bin1899 | 25       | 655c | 
@@ -125,6 +131,7 @@
   
     Given user OP3 is logged on as the operator
       And the inventory has been initialized
+      And the existing pick list has not been prepared yet
       And the existing pick list contains the following products and quantities
       | Bin     | Quantity | Part | 
       | bin1899 | 25       | 655c | 
@@ -146,6 +153,7 @@
   
     Given user Undefined is logged on as the operator
       And the inventory has been initialized
+      And the existing pick list has not been prepared yet
       And the existing pick list contains the following products and quantities
       | Bin     | Quantity | Part | 
       | bin1899 | 25       | 655c | 
@@ -157,6 +165,7 @@
   
     Given user Suspended is logged on as the operator
       And the inventory has been initialized
+      And the existing pick list has not been prepared yet
       And the existing pick list contains the following products and quantities
       | Bin     | Quantity | Part | 
       | bin1899 | 25       | 655c | 
@@ -168,12 +177,25 @@
   
     Given user Undefined is logged on as the operator
       And the inventory has not been initialized
+      And the existing pick list has not been prepared yet
       And the existing pick list contains the following products and quantities
       | Bin     | Quantity | Part | 
       | bin1899 | 25       | 655c | 
       | bin2012 | 40       | 3001 | 
      When the quantity 25 of Part 655c is requested to be added
      Then the system displays an error message notifying that must be initialized before pick list can be modified
+     
+  Scenario: Modify Pick List for One Valid Product with For Pick List that has Already been Prepared (Error Flow)
+  
+    Given user Undefined is logged on as the operator
+      And the inventory has been initialized
+      And the existing pick list has been prepared already
+      And the existing pick list contains the following products and quantities
+      | Bin     | Quantity | Part | 
+      | bin1899 | 25       | 655c | 
+      | bin2012 | 40       | 3001 | 
+     When the quantity 25 of Part 655c is requested to be added
+     Then the system displays an error message notifying that pick list can not be modified
   
   Scenario: Modify Pick List for Several Valid Products with Insufficient Quantity from a Single Bin for a Single Product (Error Flow)
   
@@ -183,6 +205,7 @@
       | bin1899 | 300      | 655c | 
       | bin2012 | 70       | 3001 | 
       | bin1755 | 350      | 645a | 
+      And the existing pick list has not been prepared yet
       And the existing pick list contains the following products and quantities
       | Bin     | Quantity | Part | 
       | bin1899 | 25       | 655c | 
@@ -205,6 +228,7 @@
       | bin1899 | 100      | 655c | 
       | bin1898 | 120      | 655c | 
       | bin2012 | 400      | 3001 | 
+      And the existing pick list has not been prepared yet
       And the existing pick list contains the following products and quantities
       | Bin     | Quantity | Part | 
       | bin1899 | 30       | 655c | 
