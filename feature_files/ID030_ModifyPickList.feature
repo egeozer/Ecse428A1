@@ -175,7 +175,7 @@
   
   Scenario: Modify Pick List for One Valid Product with Inventory not Initialized (Error Flow)
   
-    Given user Undefined is logged on as the operator
+    Given user OP3 is logged on as the operator
       And the inventory has not been initialized
       And the existing pick list has not been prepared yet
       And the existing pick list contains the following products and quantities
@@ -183,7 +183,7 @@
       | bin1899 | 25       | 655c | 
       | bin2012 | 40       | 3001 | 
      When the quantity 25 of Part 655c is requested to be added
-     Then the system displays an error message notifying that must be initialized before pick list can be modified
+     Then the system displays an error message notifying that inventory must be initialized before pick list can be modified
      
   Scenario: Modify Pick List for One Valid Product with For Pick List that has Already been Prepared (Error Flow)
   
