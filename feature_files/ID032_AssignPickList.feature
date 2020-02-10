@@ -37,7 +37,7 @@
      When the pick list with id 001 is assigned to Undefined
      Then the system does not assign the pick list
       And the system displays an error message notifying that a Valid Warehouse Picker must be selected
-      
+  
   Scenario: Assign Pick List to Suspended Warehouse Picker (Error Flow)
   
     Given user OP3 is logged on as the operator
@@ -46,7 +46,7 @@
      When the pick list with id 001 is assigned to Suspended
      Then the system does not assign the pick list
       And the system displays an error message notifying that a Warehouse Picker who isn't suspended must selected
-      
+  
   Scenario: Assign Invalid Pick List (Error Flow)
   
     Given user OP3 is logged on as the operator
@@ -63,3 +63,5 @@
      When the pick list with id 001 is assigned to WP2
      Then the system does not assign the pick list
       And the system displays an error message notifying that the Pick List with id 001 has already been prepared
+  
+  
