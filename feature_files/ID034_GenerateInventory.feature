@@ -8,10 +8,10 @@ Scenario: Generate a list of inventories (Normal Flow)
 
   Given I am logged on as an Auditor
   When I enter the incoming stock information to the system and submit into the system
-    |Quantity   |Part      |Unit Price|Name   |
-    |25         |655c      |25        |name1  |
-    |40         |3001      |40        |name2  |
-    |150        |645a      |150       |name3  |
+    |Quantity   |Part      |Unit Price|Name   |Unit Price|
+    |25         |655c      |25        |name1  |120       |
+    |40         |3001      |40        |name2  |289       |
+    |150        |645a      |150       |name3  |322       |
   Then the system should create a detailed list of inventories
     |Inventory_ID  |Name  |In Stock   |Part      |Unit Price|
     |001           |name1 |25         |655c      |120       |
@@ -23,10 +23,10 @@ Scenario: Generate a list of inventories with existing items with the same descr
   Given I am logged on as an Auditor
   And I already have the items in the database that I wish to add
   When I enter the incoming stock information to the system and submit into the system
-    |Quantity   |Part      |Unit Price|Name   |
-    |25         |655c      |25        |name1  |
-    |40         |3001      |40        |name2  |
-    |150        |645a      |150       |name3  |
+    |Quantity   |Part      |Unit Price|Name   |Unit Price|
+    |25         |655c      |25        |name1  |120       |
+    |40         |3001      |40        |name2  |289       |
+    |150        |645a      |150       |name3  |322       |
   Then the system should create a detailed list of inventories with the updated stock numbers
     |Inventory_ID  |Name  |In Stock   |Part      |Unit Price|
     |001           |name1 |433        |655c      |120       |
@@ -38,10 +38,10 @@ Scenario: Generate a list of inventories with existing items with the same descr
   Given I am logged on as an Auditor
   And I already have the items in the database that I wish to add with different names
   When I enter the incoming stock information to the system and submit into the system
-    |Quantity   |Part      |Unit Price|Name   |
-    |25         |655c      |25        |name10  |
-    |40         |3001      |40        |name20  |
-    |150        |645a      |150       |name30  |
+    |Quantity   |Part      |Unit Price|Name   |Unit Price|
+    |25         |655c      |25        |name1  |120       |
+    |40         |3001      |40        |name2  |289       |
+    |150        |645a      |150       |name3  |322       |
   Then the system should create a detailed list of inventories with the old and new names
     |Inventory_ID  |Name   |In Stock   |Part      |Unit Price|
     |001           |name1  |433        |655c      |120       |
@@ -54,8 +54,8 @@ Scenario: Generate a list of inventories with an empty or an invalid part name (
 
   Given I am logged on as an Auditor
   When I enter the incoming stock information to the system with invalid or empty part number and submit
-    |Quantity   |Part      |Unit Price|Name    |
-    |25         |          |25        |name10  |
-    |40         |          |40        |name20  |
-    |150        |          |150       |name30  |
+    |Quantity   |Part      |Unit Price|Name   |Unit Price|
+    |25         |655c      |25        |name1  |120       |
+    |40         |3001      |40        |name2  |289       |
+    |150        |645a      |150       |name3  |322       |
   Then the system should not create any list and give an error to input a valid part name
